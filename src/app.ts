@@ -48,6 +48,21 @@ app.post('/prismaadd', async (req, res) => {
             age: 29
         }
     })
+
+    res.status(200).json({response:data})
+})
+
+
+
+app.post('/getfulldata', async (req, res) => {
+    console.log("entry")
+
+
+    const data= await client.user.findFirst({
+        where:{id:req.body.id},
+        include:{todos:true}
+
+    })
     res.status(200).json({response:data})
 })
 
